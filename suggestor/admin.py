@@ -13,4 +13,4 @@ class OccassionAdmin(admin.ModelAdmin):
 
 admin.site.register(Recipient , RecipientAdmin)
 admin.site.register(Age_Group , Age_GroupAdmin)
-admin.site.register(Occassion, OccassionAdmin)
+admin.site.register(Occassion,  OccassionAdmin)
