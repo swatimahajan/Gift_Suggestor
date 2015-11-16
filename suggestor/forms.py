@@ -1,13 +1,14 @@
 from django import forms
-from Gift_Suggestor.models import relation,age_interval,occassion_name
+from suggestor.models import Recipient,Age_Group,Occassion
 
 
 class selectform(forms.Form):
-	relation_list = relation.objects.values_list('relation_name')
-	select_relation = [('', '----------')] + [(id, id) for id in relation_list]
-	select_age = [('0', '-----')]
-	select_ocassion = [('0', '-----')]
+	relation_list = Recipient.objects.values_list('relation')
+	
+	relation_choices= [('', '----------')] + [(id, id) for id in relation_list]
+	age_choices = [('0', '-----')]
+	ocassion_choices = [('0', '-----')]
 
-	relation = forms.ChoiceField(select_relation,required=True, widget=forms.Select(attrs={'required':'required'}))
-	age = forms.ChoiceField(select_age,required=True, widget=forms.Select(attrs={'required':'required'}))
-	occassion = forms.ChoiceField(select_ocassion, required= False, widget=forms.Select(attrs={'required':'required'}))
+	relation = forms.ChoiceField(relation_choices,required=True, widget=forms.Select(attrs={'required':'required'}))
+	age = forms.ChoiceField(age_choices,required=True, widget=forms.Select(attrs={'required':'required'}))
+	occassion = forms.ChoiceField(ocassion_choices, required= True, widget=forms.Select(attrs={'required':'required'}))
